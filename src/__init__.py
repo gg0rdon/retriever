@@ -1,5 +1,6 @@
-from database import Base
+from database import Base, engine
 
 __all__ = [
-  Base
+  Base,
+  engine
 ]
