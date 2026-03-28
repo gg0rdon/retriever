@@ -11,5 +11,5 @@ class Issue(Base):
   priority = Column(String(64), nullable=False)
   created_at = Column(DateTime, default=func.now())
   updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
-  completed = Column(DateTime, nullable=False, default=False)
+  completed_at = Column(DateTime, nullable=True, default=None)
   comment = relationship("Comment", back_populates="issue", cascade="all, delete")
