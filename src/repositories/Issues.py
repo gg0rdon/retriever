@@ -1,25 +1,21 @@
 from sqlalchemy.orm import Session
 from src.models import Issue
-from src.schemas import IssueBase, IssueCreate
-from typing import List
+from src.schemas import IssueCreate, IssueUpdate
 
-from src.schemas.issue import IssueUpdate
-
-
-def get_issue(db: Session, issue_id: int):
+def get_issue(db: Session, issue_id: int) -> Issue | None:
   return db.query(Issue).filter(Issue.id == issue_id).first()
 
-def get_issues(db: Session):
+def get_issues(db: Session) -> list[Issue] | None:
   return db.query(Issue).all()
 
-def create_issue(db: Session, data: IssueCreate):
+def create_issue(db: Session, data: IssueCreate) -> Issue:
   issue = Issue(**data.model_dump())
   db.add(issue)
   db.commit()
   db.refresh(issue)
   return issue
 
-def update_issue(db: Session, issue_id: int, data: IssueUpdate):
+def update_issue(db: Session, issue_id: int, data: IssueUpdate) -> Issue | None:
   issue = get_issue(db, issue_id)
   if not issue:
     return None
@@ -29,7 +25,7 @@ def update_issue(db: Session, issue_id: int, data: IssueUpdate):
   db.refresh(issue)
   return issue
 
-def delete_issue(db: Session, issue_id: int):
+def delete_issue(db: Session, issue_id: int) -> Issue | None:
   issue = get_issue(db, issue_id)
   if not issue:
     return None
