@@ -1,7 +1,7 @@
-from .comment import Comment
 from .issue import Issue
+from .comment import Comment
 
 __all__ = [
-  Comment,
-  Issue
+  Issue,
+  Comment
 ]

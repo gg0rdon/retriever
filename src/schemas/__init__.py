@@ -1,4 +1,4 @@
-from .comment import CommentBase, CommentCreate
+from .comment import CommentBase, CommentCreate, CommentUpdate
 from .issue import IssueBase, IssueCreate, IssueUpdate
 
 __all__ = [
@@ -7,4 +7,5 @@ __all__ = [
   IssueUpdate,
   CommentBase,
   CommentCreate,
+  CommentUpdate
 ]
