@@ -1,5 +1,5 @@
-from sqlalchemy.orm import Session
 from src.models import Comment
+from sqlalchemy.orm import Session
 from src.schemas import CommentCreate
 from src.schemas.comment import CommentUpdate
 
@@ -9,8 +9,8 @@ def get_comment(db: Session, comment_id: int) -> Comment | None:
 def get_comments_by_issue(db: Session, issue_id: int) -> list[Comment] | None:
   return db.query(Comment).filter(Comment.issue_id == issue_id).all()
 
-def create_comment(db: Session, data: CommentCreate) -> Comment:
-  comment = Comment(**data.model_dump())
+def create_comment(db: Session, issue_id: int, data: CommentCreate) -> Comment:
+  comment = Comment(issue_id, **data.model_dump())
   db.add(comment)
   db.commit()
   db.refresh(comment)

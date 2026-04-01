@@ -5,12 +5,10 @@ class CommentBase(BaseModel):
   body: str = Field(min_length=1, max_length=500)
 
 class CommentCreate(CommentBase):
-  issue_id: int
   pass
 
-class CommentUpdate(BaseModel):
-  body: str = Field(min_length=1, max_length=500)
-  pass
+class CommentUpdate(CommentBase):
+  id: int
 
 class CommentResponse(CommentBase):
   id: int

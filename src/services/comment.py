@@ -11,20 +11,26 @@ def get_comment(db: Session, comment_id: int) -> Comment:
     raise HTTPException(status_code=404, detail="Comment not found")
   return comment
 
-def get_comments_by_id(db: Session, issue_id: int) -> List[Comment]:
+def get_comments_by_issue(db: Session, issue_id: int) -> List[Comment]:
   comments = comment_repo.get_comments_by_issue(db, issue_id)
   if not comments:
     raise HTTPException(status_code=404, detail="Comments not found")
   return comments
 
-def create_comment(db: Session, data: CommentCreate) -> Comment:
-  comment = comment_repo.create_comment(db, data)
+def create_comment(db: Session, issue_id: int, data: CommentCreate) -> Comment:
+  comment = comment_repo.create_comment(db, issue_id, data)
   if not comment:
-    raise HTTPException(status_code=400, detail="Comment creation failed")
+    raise HTTPException(status_code=404, detail="Comment creation failed")
   return comment
 
-def comment_update(db: Session, comment_id: int, data: CommentUpdate) -> Comment:
+def update_comment(db: Session, comment_id: int, data: CommentUpdate) -> Comment:
   comment = comment_repo.update_comment(db, comment_id, data)
   if not comment:
     raise HTTPException(status_code=404, detail="Comment update failed")
+  return comment
+
+def delete_comment(db: Session, comment_id: int) -> Comment:
+  comment = comment_repo.delete_comment(db, comment_id)
+  if not comment:
+    raise HTTPException(status_code=404, detail="Comment was not deleted")
   return comment
