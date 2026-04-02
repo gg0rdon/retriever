@@ -3,6 +3,19 @@ from sqlalchemy import Column, Integer, String, Text, DateTime, func
 from sqlalchemy.orm import relationship
 
 class Issue(Base):
+  """
+  The model for issues table
+  This is the core part of this simple issue tracker.
+  id: To identify the issue.
+  title: Short description of the issue.
+  description: More detailed description of the issue.
+  stats: If its in the backlog, in progress or even done.
+  priority: High|Medium|Low
+  created_at: Standard and good to know.
+  updated_at: Will most likely receive updates often
+  completed_at: Just for fun and I could watch back.
+  comment: Relation to the comments tables
+  """
   __tablename__ = 'issues'
   id = Column(Integer, primary_key=True, index=True)
   title = Column(String(255), nullable=False)

@@ -21,7 +21,6 @@ class IssueBase(BaseModel):
   status: Status = Field(default=Status.backlog)
 
 class IssueCreate(IssueBase):
-  status: str = Status.backlog
   pass
 
 class IssueUpdate(IssueBase):
@@ -32,7 +31,7 @@ class IssueUpdate(IssueBase):
   updated_at: datetime
 
 class IssueCompleted(IssueBase):
-  completed_at: datetime
+  pass
 
 class IssueResponse(IssueBase):
   id: int
