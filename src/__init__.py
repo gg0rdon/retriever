@@ -1,4 +1,4 @@
-from database import Base, engine, get_db
+from .database import Base, engine, get_db
 
 __all__ = [
   Base,

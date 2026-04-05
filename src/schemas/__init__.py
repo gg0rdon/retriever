@@ -1,5 +1,5 @@
-from comment import CommentBase, CommentCreate, CommentUpdate, CommentResponse
-from issue import IssueBase, IssueCreate, IssueUpdate, IssueResponse
+from .comment import CommentBase, CommentCreate, CommentUpdate, CommentResponse
+from .issue import IssueBase, IssueCreate, IssueUpdate, IssueResponse
 
 __all__ = [
   IssueBase,

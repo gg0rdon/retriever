@@ -10,16 +10,22 @@ def get_comment(db: Session, comment_id: int) -> Comment | None:
   :param comment_id: Comment identifier.
   :return: Suppose to be Comment or None, not type[Comment].
   """
-  return db.query(Comment).filter(Comment.id == comment_id).first()
+  comment = db.query(Comment).filter(Comment.id == comment_id).first()
+  if not comment:
+    return None
+  return comment
 
-def get_comments_by_issue(db: Session, issue_id: int) -> list[Comment]:
+def get_comments_by_issue(db: Session, issue_id: int) -> list[Comment] | None:
   """
   Fetches all comments for given issue id.
   :param db: Current database session.
   :param issue_id: Issue identifier.
   :return: list of Comment objects.
   """
-  return db.query(Comment).filter(Comment.issue_id == issue_id).all()
+  comments = db.query(Comment).filter(Comment.issue_id == issue_id).all()
+  if not comments:
+    return None
+  return comments
 
 def create_comment(db: Session, issue_id: int, data: CommentCreate) -> Comment:
   """

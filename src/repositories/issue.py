@@ -9,17 +9,23 @@ def get_issue(db: Session, issue_id: int) -> Issue | None:
   Fetches an issue object from the database if it finds any.
   :param db: Current database session.
   :param issue_id: Issue identifier.
-  :return: The Issue object it found from the database.
+  :return: The Issue object from the database or None if issue was not found.
   """
-  return db.query(Issue).filter(Issue.id == issue_id).first()
+  issue = db.query(Issue).filter(Issue.id == issue_id).first()
+  if not issue:
+    return None
+  return issue
 
 def get_issues(db: Session) -> list[Issue] | None:
   """
   Fetches all issues from the database.
   :param db: Current database session.
-  :return: A list of all the issues found from the database.
+  :return: A list of all the issues found from the database or None.
   """
-  return db.query(Issue).all()
+  issues = db.query(Issue).all()
+  if not issues:
+    return None
+  return issues
 
 def create_issue(db: Session, data: IssueCreate) -> Issue:
   """
@@ -40,7 +46,7 @@ def update_issue(db: Session, issue_id: int, data: IssueUpdate) -> Issue | None:
   :param db: Current database session.
   :param issue_id: Issue identifier.
   :param data: Validated issue data from the request body
-  :return: A newly updated Issue object from the database.
+  :return: A newly updated Issue object from the database or None if issue was not found.
   """
   issue = get_issue(db, issue_id)
   if not issue:
@@ -57,7 +63,7 @@ def complete_issue(db: Session, issue_id: int, data: IssueUpdate) -> Issue | Non
   :param db: Current database session.
   :param issue_id: issue identifier.
   :param data: Validated issue data from the request body
-  :return: The Issue object recently moved to done.
+  :return: The Issue object recently moved to done or None if issue was not found..
   """
   issue = get_issue(db, issue_id)
   if not issue:
@@ -73,7 +79,7 @@ def delete_issue(db: Session, issue_id: int) -> Issue | None:
   Simply deletes an issue from the database.
   :param db: Current database session.
   :param issue_id: issue identifier.
-  :return: The recently deleted Issue object from the database.
+  :return: The recently deleted Issue object from the database or None if issue was not found..
   """
   issue = get_issue(db, issue_id)
   if not issue:

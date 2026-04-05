@@ -12,6 +12,10 @@ sessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 Base = declarative_base()
 
 def get_db():
+  """
+  Fetches the local session and closes it once the fetch is done.
+  Does a rollback on any exception raised during the session.
+  """
   db = sessionLocal()
   try:
     yield db

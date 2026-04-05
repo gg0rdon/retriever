@@ -25,4 +25,4 @@ class Issue(Base):
   created_at = Column(DateTime, default=func.now())
   updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
   completed_at = Column(DateTime, nullable=True, default=None)
-  comment = relationship("Comment", back_populates="issue", cascade="all, delete")
+  comments = relationship("Comment", back_populates="issue", cascade="all, delete")
