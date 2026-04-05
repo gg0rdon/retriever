@@ -3,3 +3,4 @@ __pycache__
 *.ipynb
 .env
 todo.md
+alembic/versions

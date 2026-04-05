@@ -42,7 +42,7 @@ class IssueUpdate(IssueBase):
   """
   Update demands a lot of optional fields because the smallest update is still an update.
   """
-  title: str | None = Field(max_length=255)
+  title: str | None = Field(default=None, max_length=255)
   description: str | None = None
   priority: Priority | None = None
   status: Status | None = None

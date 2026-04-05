@@ -5,7 +5,6 @@ class CommentBase(BaseModel):
   """
   Base schema for comment which demands the issue identifier and the body text.
   """
-  issue_id: int
   body: str = Field(min_length=1, max_length=500)
 
 class CommentCreate(CommentBase):

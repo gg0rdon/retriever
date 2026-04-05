@@ -15,7 +15,7 @@ class Comment(Base):
   __tablename__ = 'comments'
   id = Column(Integer, primary_key=True, index=True)
   body = Column(Text, nullable=False)
-  issue_id = Column(Integer, ForeignKey('issues.id'), nullable=False)
+  issue_id = Column(Integer, ForeignKey('issues.id', ondelete='CASCADE'), nullable=False)
   created_at = Column(DateTime, default=func.now())
   updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
   issue = relationship("Issue", back_populates="comments")

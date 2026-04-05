@@ -35,7 +35,7 @@ def create_comment(db: Session, issue_id: int, data: CommentCreate) -> Comment:
   :param data: Related info to the Comment object, see Comment model.
   :return: A new Comment object from the database.
   """
-  comment = Comment(issue_id, **data.model_dump())
+  comment = Comment(issue_id=issue_id, **data.model_dump())
   db.add(comment)
   db.commit()
   db.refresh(comment)
