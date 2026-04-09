@@ -1,7 +1,9 @@
-from src.models import Comment
 from sqlalchemy.orm import Session
+
+from src.models import Comment
 from src.schemas import CommentCreate
 from src.schemas.comment import CommentUpdate
+
 
 def get_comment(db: Session, comment_id: int) -> Comment | None:
   """
@@ -71,4 +73,3 @@ def delete_comment(db: Session, comment_id: int) -> Comment | None:
   db.delete(comment)
   db.commit()
   return comment
-

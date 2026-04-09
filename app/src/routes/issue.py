@@ -1,10 +1,10 @@
-from src.database import get_db
-from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
 
+from src.database import get_db
 from src.models import Issue
+from src.schemas import IssueCreate, IssueResponse, IssueUpdate
 from src.services import issue as issue_service
-from src.schemas import IssueCreate, IssueUpdate, IssueResponse
 
 # The specific issue router for viewing, creating ,updating and deleting issues
 issue_router = APIRouter(prefix="/issue", tags=["Issues"])

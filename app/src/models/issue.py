@@ -1,6 +1,8 @@
-from src import Base
-from sqlalchemy import Column, Integer, String, Text, DateTime, func
+from sqlalchemy import Column, DateTime, Integer, String, Text, func
 from sqlalchemy.orm import relationship
+
+from src import Base
+
 
 class Issue(Base):
   """

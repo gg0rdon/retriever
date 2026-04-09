@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from src.routes import issue_router, comment_router
+
+from app import comment_router, issue_router
 
 app = FastAPI(
   title="Retriever Issue tracker.",

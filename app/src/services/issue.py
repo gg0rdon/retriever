@@ -1,8 +1,10 @@
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
+
 from src.models import Issue
 from src.repositories import issue as issue_repo
 from src.schemas import IssueCreate, IssueUpdate
-from fastapi import HTTPException
+
 
 def get_issue(db: Session, issue_id: int) -> Issue:
   """

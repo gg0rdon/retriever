@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from src.models import Issue
 from src.schemas import IssueCreate, IssueUpdate
 
+
 def get_issue(db: Session, issue_id: int) -> Issue | None:
   """
   Fetches an issue object from the database if it finds any.
@@ -46,7 +47,8 @@ def update_issue(db: Session, issue_id: int, data: IssueUpdate) -> Issue | None:
   :param db: Current database session.
   :param issue_id: Issue identifier.
   :param data: Validated issue data from the request body
-  :return: A newly updated Issue object from the database or None if issue was not found.
+  :return: A newly updated Issue object from the database
+    or None no issue was not found.
   """
   issue = get_issue(db, issue_id)
   if not issue:
@@ -63,7 +65,7 @@ def complete_issue(db: Session, issue_id: int, data: IssueUpdate) -> Issue | Non
   :param db: Current database session.
   :param issue_id: issue identifier.
   :param data: Validated issue data from the request body
-  :return: The Issue object recently moved to done or None if issue was not found..
+  :return: The Issue object recently moved to done or None if issue was not found.
   """
   issue = get_issue(db, issue_id)
   if not issue:
@@ -79,7 +81,8 @@ def delete_issue(db: Session, issue_id: int) -> Issue | None:
   Simply deletes an issue from the database.
   :param db: Current database session.
   :param issue_id: issue identifier.
-  :return: The recently deleted Issue object from the database or None if issue was not found..
+  :return: The recently deleted Issue object from the database
+    or None if issue was not found.
   """
   issue = get_issue(db, issue_id)
   if not issue:
@@ -87,4 +90,3 @@ def delete_issue(db: Session, issue_id: int) -> Issue | None:
   db.delete(issue)
   db.commit()
   return issue
-

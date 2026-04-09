@@ -1,0 +1,18 @@
+
+line-length = 120
+
+[lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes (unused imports, variables etc.)
+    "I",   # isort (import sorting)
+    "B",   # bugbear (common bugs and design issues)
+    "C4",  # flake8-comprehensions (better list/dict comprehensions)
+    "UP",  # pyupgrade (modernize Python syntax)
+    "N",   # pep8 naming conventions
+]
+
+ignore = [
+    "B008",
+]

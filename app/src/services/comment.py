@@ -1,8 +1,10 @@
-from src.models import Comment
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
+
+from src.models import Comment
 from src.repositories import comment as comment_repo
 from src.schemas import CommentCreate, CommentUpdate
-from fastapi import HTTPException
+
 
 def get_comment(db: Session, comment_id: int) -> Comment:
   """

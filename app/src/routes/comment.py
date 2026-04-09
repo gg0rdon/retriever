@@ -1,9 +1,10 @@
-from src.models import Comment
-from src.database import get_db
-from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from src.database import get_db
+from src.models import Comment
+from src.schemas import CommentCreate, CommentResponse, CommentUpdate
 from src.services import comment as comment_service
-from src.schemas import CommentCreate, CommentUpdate, CommentResponse
 
 # The specific comment router for a specific issue
 comment_router = APIRouter(prefix="/issues/{issue_id}/comments", tags=["comments"])

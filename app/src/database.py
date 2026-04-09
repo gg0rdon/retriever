@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -8,7 +9,7 @@ load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
-sessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+session_local = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 Base = declarative_base()
 
 def get_db():
@@ -16,7 +17,7 @@ def get_db():
   Fetches the local session and closes it once the fetch is done.
   Does a rollback on any exception raised during the session.
   """
-  db = sessionLocal()
+  db = session_local()
   try:
     yield db
   except Exception:

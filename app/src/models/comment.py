@@ -1,6 +1,8 @@
-from src import Base
-from sqlalchemy import Column, Integer, Text, DateTime, ForeignKey, func
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, Text, func
 from sqlalchemy.orm import relationship
+
+from app import Base
+
 
 class Comment(Base):
   """
