@@ -5,7 +5,7 @@ It make it very clear I love golden retrievers and I like working in python so f
  - python3.14+
  - psql (PostgreSQL) 18.1+
  - SQLAlchemy 2.0+
- - uvicron 0.42+
+ - uvicorn 0.42+
  - python-dotenv 1.2+
  - psycopg2-binary 2.9+
 so far ...
